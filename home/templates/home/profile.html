@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>پروفایل | TaskFlow</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Vazirmatn", sans-serif;
+            background: #080b12;
+            color: #f1f5f9;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+            height: 74px;
+            background: #0d111a;
+            border-bottom: 1px solid #1d2432;
+
+            display: flex;
+            align-items: center;
+        }
+
+        .header-container {
+            width: min(1180px, calc(100% - 40px));
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            color: #f8fafc;
+            text-decoration: none;
+
+            font-size: 20px;
+            font-weight: 800;
+
+            direction: ltr;
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 11px;
+
+            background: #6366f1;
+            color: #ffffff;
+
+            font-size: 19px;
+            font-weight: 800;
+
+            box-shadow: 0 7px 20px rgba(99, 102, 241, 0.25);
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .navigation {
+            display: flex;
+            gap: 8px;
+        }
+
+        .navigation a {
+            text-decoration: none;
+
+            color: #7f8a9d;
+
+            padding: 9px 16px;
+
+            border-radius: 9px;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            transition: 0.2s ease;
+        }
+
+        .navigation a:hover,
+        .navigation a.active {
+            color: #a5b4fc;
+            background: #171a2b;
+        }
+
+        /* =========================
+           USER AREA
+        ========================= */
+
+        .user-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-name {
+            font-size: 13px;
+            font-weight: 700;
+
+            color: #e2e8f0;
+        }
+
+        .logout {
+            color: #f87171;
+
+            text-decoration: none;
+
+            font-size: 12px;
+            font-weight: 600;
+
+            margin-right: 8px;
+        }
+
+        .logout:hover {
+            color: #fca5a5;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .main {
+            min-height: calc(100vh - 150px);
+            padding: 50px 0 70px;
+        }
+
+        .container {
+            width: min(900px, calc(100% - 40px));
+            margin: auto;
+        }
+
+        /* =========================
+           PAGE HEADER
+        ========================= */
+
+        .page-header {
+            margin-bottom: 30px;
+        }
+
+        .page-label {
+            display: inline-block;
+
+            color: #818cf8;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            margin-bottom: 7px;
+        }
+
+        .page-header h1 {
+            font-size: 30px;
+            font-weight: 800;
+
+            color: #f8fafc;
+
+            margin-bottom: 7px;
+        }
+
+        .page-header p {
+            color: #7f8a9d;
+            font-size: 13px;
+        }
+
+        /* =========================
+           PROFILE CARD
+        ========================= */
+
+        .profile-card {
+            background: #111620;
+
+            border: 1px solid #202838;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            box-shadow: 0 20px 55px rgba(0, 0, 0, 0.22);
+        }
+
+        /* =========================
+           PROFILE TOP
+        ========================= */
+
+        .profile-top {
+            padding: 35px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 24px;
+
+            border-bottom: 1px solid #202838;
+        }
+
+        .profile-image-wrapper {
+            flex-shrink: 0;
+        }
+
+        .profile-image {
+            width: 105px;
+            height: 105px;
+
+            border-radius: 50%;
+
+            object-fit: cover;
+
+            border: 3px solid #6366f1;
+
+            padding: 3px;
+
+            background: #0b0f17;
+        }
+
+        .profile-info h2 {
+            font-size: 21px;
+            font-weight: 800;
+
+            color: #f1f5f9;
+
+            margin-bottom: 6px;
+        }
+
+        .profile-email {
+            color: #737e91;
+            font-size: 12px;
+
+            direction: ltr;
+            text-align: right;
+        }
+
+        .member-date {
+            display: inline-block;
+
+            margin-top: 12px;
+
+            padding: 5px 10px;
+
+            border-radius: 20px;
+
+            background: #191b36;
+
+            color: #818cf8;
+
+            font-size: 10px;
+        }
+
+        /* =========================
+           FORM
+        ========================= */
+
+        .profile-form {
+            padding: 35px;
+        }
+
+        .section-title {
+            margin-bottom: 25px;
+        }
+
+        .section-title h2 {
+            color: #f1f5f9;
+
+            font-size: 17px;
+            font-weight: 700;
+
+            margin-bottom: 5px;
+        }
+
+        .section-title p {
+            color: #687386;
+            font-size: 11px;
+        }
+
+        .form-grid {
+            display: grid;
+
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+
+            gap: 8px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            color: #cbd5e1;
+
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            height: 48px;
+
+            border: 1px solid #293244;
+            border-radius: 11px;
+
+            outline: none;
+
+            padding: 0 14px;
+
+            background: #0b0f17;
+
+            color: #e2e8f0;
+
+            font-family: inherit;
+            font-size: 13px;
+
+            transition: 0.2s ease;
+        }
+
+        .form-group input:focus {
+            border-color: #6366f1;
+
+            background: #0d121c;
+
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #586375;
+        }
+
+        /* =========================
+           FILE INPUT
+        ========================= */
+
+        .image-upload {
+            position: relative;
+        }
+
+        .image-upload input {
+            height: auto;
+            padding: 11px;
+        }
+
+        /* =========================
+           ERRORS
+        ========================= */
+
+        .form-errors {
+            margin-bottom: 20px;
+
+            padding: 12px 14px;
+
+            border-radius: 11px;
+
+            background: rgba(239, 68, 68, 0.08);
+
+            border: 1px solid rgba(239, 68, 68, 0.25);
+
+            color: #f87171;
+
+            font-size: 12px;
+
+            line-height: 1.8;
+        }
+
+        .field-error {
+            color: #f87171;
+            font-size: 11px;
+        }
+
+        /* =========================
+           FORM FOOTER
+        ========================= */
+
+        .form-footer {
+            margin-top: 27px;
+
+            padding-top: 22px;
+
+            border-top: 1px solid #1d2431;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+        .form-hint {
+            color: #596477;
+            font-size: 11px;
+        }
+
+        .save-button {
+            height: 45px;
+
+            padding: 0 23px;
+
+            border: none;
+            border-radius: 10px;
+
+            background: #6366f1;
+
+            color: #ffffff;
+
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .save-button:hover {
+            background: #4f46e5;
+
+            transform: translateY(-1px);
+
+            box-shadow: 0 8px 22px rgba(99, 102, 241, 0.25);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            height: 76px;
+
+            background: #0d111a;
+
+            border-top: 1px solid #1d2432;
+        }
+
+        .footer-container {
+            width: min(900px, calc(100% - 40px));
+
+            height: 100%;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+        .footer p {
+            color: #596477;
+            font-size: 10px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .header-container {
+                width: calc(100% - 30px);
+            }
+
+            .navigation {
+                display: none;
+            }
+
+            .user-name {
+                display: none;
+            }
+
+            .main {
+                padding-top: 35px;
+            }
+
+            .container {
+                width: calc(100% - 28px);
+            }
+
+            .page-header h1 {
+                font-size: 25px;
+            }
+
+            .profile-top {
+                padding: 28px 22px;
+
+                flex-direction: column;
+
+                text-align: center;
+            }
+
+            .profile-form {
+                padding: 25px 20px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .form-footer {
+                align-items: stretch;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            .save-button {
+                width: 100%;
+            }
+
+            .footer-container {
+                width: calc(100% - 28px);
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <div class="header-container">
+
+        <a href="/" class="logo">
+
+            <span class="logo-icon">
+                ✓
+            </span>
+
+            <span>
+                TaskFlow
+            </span>
+
+        </a>
+
+
+        <nav class="navigation">
+
+            <a href="/">
+                تسک‌ها
+            </a>
+
+            <a href="{% url 'home:profile' %}" class="active">
+                پروفایل
+            </a>
+
+        </nav>
+
+
+        <div class="user-area">
+
+            <span class="user-name">
+                {{ request.user.username }}
+            </span>
+
+            <a href="{% url 'account:logout' %}" class="logout">
+                خروج
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="main">
+
+    <div class="container">
+
+
+        <div class="page-header">
+
+            <span class="page-label">
+                حساب کاربری
+            </span>
+
+            <h1>
+                پروفایل من
+            </h1>
+
+            <p>
+                اطلاعات حساب کاربری خودت رو مدیریت و به‌روزرسانی کن.
+            </p>
+
+        </div>
+
+
+        <section class="profile-card">
+
+
+
+
+            <div class="profile-top">
+
+                <div class="profile-image-wrapper">
+
+                    <img
+                            src="{{ profile.image.url }}"
+                            alt="تصویر پروفایل"
+                            class="profile-image"
+                    >
+
+                </div>
+
+
+                <div class="profile-info">
+
+                    <h2>
+                        {{ request.user.username }}
+                    </h2>
+
+                    <p class="profile-email">
+                        {{ request.user.email }}
+                    </p>
+
+                    <span class="member-date">
+                        عضو از {{ profile.created|date:"Y/m/d" }}
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 EDIT FORM
+            ========================= -->
+
+            <form
+                    method="post"
+                    enctype="multipart/form-data"
+                    class="profile-form"
+            >
+
+                {% csrf_token %}
+
+
+                {% if user_form.non_field_errors or profile_form.non_field_errors %}
+
+                    <div class="form-errors">
+
+                        {% for error in user_form.non_field_errors %}
+                            <div>{{ error }}</div>
+                        {% endfor %}
+
+                        {% for error in profile_form.non_field_errors %}
+                            <div>{{ error }}</div>
+                        {% endfor %}
+
+                    </div>
+
+                {% endif %}
+
+
+                <div class="section-title">
+
+                    <h2>
+                        ویرایش اطلاعات
+                    </h2>
+
+                    <p>
+                        اطلاعات حساب کاربری خودت را تغییر بده.
+                    </p>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <!-- Username -->
+
+                    <div class="form-group">
+
+                        <label for="{{ user_form.username.id_for_label }}">
+                            نام کاربری
+                        </label>
+
+                        {{ user_form.username }}
+
+                        {% for error in user_form.username.errors %}
+
+                            <span class="field-error">
+                                {{ error }}
+                            </span>
+
+                        {% endfor %}
+
+                    </div>
+
+
+                    <!-- Email -->
+
+                    <div class="form-group">
+
+                        <label for="{{ user_form.email.id_for_label }}">
+                            ایمیل
+                        </label>
+
+                        {{ user_form.email }}
+
+                        {% for error in user_form.email.errors %}
+
+                            <span class="field-error">
+                                {{ error }}
+                            </span>
+
+                        {% endfor %}
+
+                    </div>
+
+
+                    <!-- Profile Image -->
+
+                    <div class="form-group full image-upload">
+
+                        <label for="{{ profile_form.image.id_for_label }}">
+                            تصویر پروفایل
+                        </label>
+
+                        {{ profile_form.image }}
+
+                        {% for error in profile_form.image.errors %}
+
+                            <span class="field-error">
+                                {{ error }}
+                            </span>
+
+                        {% endfor %}
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="form-footer">
+
+                    <span class="form-hint">
+                        تغییرات پس از ذخیره اعمال می‌شوند.
+                    </span>
+
+                    <button
+                            type="submit"
+                            class="save-button"
+                    >
+                        ذخیره تغییرات
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <p>
+            ساده‌تر کار کن، بهتر زندگی کن.
+        </p>
+
+        <p>
+            © 2026 TaskFlow
+        </p>
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>
